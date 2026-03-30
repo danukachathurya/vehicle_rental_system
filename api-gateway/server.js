@@ -48,6 +48,31 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get("/", (req, res) => {
+  res.type("text").send("API Gateway is running. Visit /api-docs for service docs.");
+});
+
+// Alias for vehicle service (legacy path)
+app.use("/api/vehicle-service/api-docs", createDocsProxy("/api/vehicle-service", "http://localhost:5002"));
+app.use(
+  "/api/vehicle-service",
+  createProxyMiddleware({
+    target: "http://localhost:5002",
+    changeOrigin: true,
+    pathRewrite: (path) => (path === "/" ? "/vehicles" : `/vehicles${path}`),
+  })
+);
+
+// Short alias: /api/vehicle -> /vehicles
+app.use(
+  "/api/vehicle",
+  createProxyMiddleware({
+    target: "http://localhost:5002",
+    changeOrigin: true,
+    pathRewrite: (path) => (path === "/" ? "/vehicles" : `/vehicles${path}`),
+  })
+);
+
 app.get(["/api-docs", "/api-docs/"], (req, res) => {
   const links = services
     .map(
