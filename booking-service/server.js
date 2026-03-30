@@ -81,7 +81,8 @@ const swaggerUiOptions = {
               (descriptionCell.querySelector(".response-col_description__inner") ||
                 descriptionCell);
             var status = statusCell && (statusCell.textContent || "").trim();
-            var isHandledErrorStatus = status === "400" || status === "500";
+            var isHandledErrorStatus =
+              status === "400" || status === "404" || status === "500";
             var responseText = status && liveResponsesByStatus[status];
             var existing = inner && inner.querySelector(".actual-response-example");
 
