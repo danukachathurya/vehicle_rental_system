@@ -10,14 +10,13 @@ module.exports = swaggerJsDoc({
         BookingCreateInput: {
           type: "object",
           properties: {
-            vehicleBrand: { type: "string", example: "Toyota" },
-            vehicleModel: { type: "string", example: "Corolla" },
-            vehicleColor: { type: "string", example: "White" },
-            date: { type: "string", example: "2026-03-29" },
+            vehicleBrand: { type: "string" },
+            vehicleModel: { type: "string" },
+            vehicleColor: { type: "string" },
+            date: { type: "string" },
             status: {
               type: "string",
               enum: ["pending", "confirmed", "cancelled", "completed"],
-              example: "pending",
             },
           },
           required: [
@@ -35,21 +34,17 @@ module.exports = swaggerJsDoc({
               properties: {
                 bookingId: {
                   type: "string",
-                  example: "BKG-1743243950182-A1B2C3",
                 },
                 _id: {
                   type: "string",
-                  example: "67e7aed6b812a1cd93bcd123",
                 },
                 createdAt: {
                   type: "string",
                   format: "date-time",
-                  example: "2026-03-29T09:30:00.000Z",
                 },
                 updatedAt: {
                   type: "string",
                   format: "date-time",
-                  example: "2026-03-29T09:30:00.000Z",
                 },
               },
             },
@@ -58,14 +53,13 @@ module.exports = swaggerJsDoc({
         BookingUpdate: {
           type: "object",
           properties: {
-            vehicleBrand: { type: "string", example: "Toyota" },
-            vehicleModel: { type: "string", example: "Corolla" },
-            vehicleColor: { type: "string", example: "Black" },
-            date: { type: "string", example: "2026-04-02" },
+            vehicleBrand: { type: "string" },
+            vehicleModel: { type: "string" },
+            vehicleColor: { type: "string" },
+            date: { type: "string" },
             status: {
               type: "string",
               enum: ["pending", "confirmed", "cancelled", "completed"],
-              example: "confirmed",
             },
           },
         },
@@ -74,7 +68,6 @@ module.exports = swaggerJsDoc({
           properties: {
             error: {
               type: "string",
-              example: "Booking validation failed",
             },
           },
         },
@@ -83,7 +76,6 @@ module.exports = swaggerJsDoc({
           properties: {
             message: {
               type: "string",
-              example: "Booking deleted successfully",
             },
           },
         },

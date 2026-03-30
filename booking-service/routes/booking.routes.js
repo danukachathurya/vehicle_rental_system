@@ -17,12 +17,6 @@ const {
  *         application/json:
  *           schema:
  *             $ref: '#/components/schemas/BookingCreateInput'
- *           example:
- *             vehicleBrand: Toyota
- *             vehicleModel: Corolla
- *             vehicleColor: White
- *             date: 2026-03-29
- *             status: pending
  *         application/x-www-form-urlencoded:
  *           schema:
  *             $ref: '#/components/schemas/BookingCreateInput'
@@ -89,10 +83,6 @@ router.get("/", getBookings);
  *         application/json:
  *           schema:
  *             $ref: '#/components/schemas/BookingUpdate'
- *           example:
- *             vehicleColor: Black
- *             status: confirmed
- *             date: 2026-04-02
  *         application/x-www-form-urlencoded:
  *           schema:
  *             $ref: '#/components/schemas/BookingUpdate'
