@@ -4,26 +4,13 @@ const connectDB = require("./config/db");
 const routes = require("./routes/vehicle.routes");
 
 const swaggerUi = require("swagger-ui-express");
-const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerSpec = require("./swagger/vehicle.swagger");
 
 const app = express();
 app.use(express.json());
 
 // DB connect
 connectDB();
-
-// Swagger config
-const swaggerSpec = swaggerJsDoc({
-  definition: {
-    openapi: "3.0.0",
-    info: {
-      title: "Vehicle API",
-      version: "1.0.0",
-    },
-    servers: [{ url: "/" }],
-  },
-  apis: ["./routes/*.js"],
-});
 
 // Routes
 app.use("/vehicles", routes);
