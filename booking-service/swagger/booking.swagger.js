@@ -37,14 +37,6 @@ module.exports = swaggerJsDoc({
                   type: "string",
                   example: "BKG-1743243950182-A1B2C3",
                 },
-                userId: {
-                  type: "string",
-                  example: "USR-1743243950182-D4E5F6",
-                },
-                vehicleId: {
-                  type: "string",
-                  example: "VEH-1743243950182-9A8B7C",
-                },
                 _id: {
                   type: "string",
                   example: "67e7aed6b812a1cd93bcd123",
