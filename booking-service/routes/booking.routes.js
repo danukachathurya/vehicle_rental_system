@@ -11,40 +11,23 @@ const {
  * /bookings:
  *   post:
  *     summary: Create booking
+ *     description: Execute the request to see the actual saved booking in the Server response section.
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
  *             $ref: '#/components/schemas/BookingCreateInput'
- *           example:
- *             vehicleBrand: Toyota
- *             vehicleModel: Corolla
- *             vehicleColor: White
- *             date: 2026-03-29
- *             status: pending
  *         application/x-www-form-urlencoded:
  *           schema:
  *             $ref: '#/components/schemas/BookingCreateInput'
  *     responses:
  *       201:
  *         description: Booking created successfully
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Booking'
  *       400:
  *         description: Validation error
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/ErrorResponse'
  *       500:
  *         description: Server error
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/ErrorResponse'
  */
 router.post("/", createBooking);
 
@@ -53,21 +36,12 @@ router.post("/", createBooking);
  * /bookings:
  *   get:
  *     summary: Get all bookings
+ *     description: Execute the request to see the actual bookings returned by the server.
  *     responses:
  *       200:
  *         description: List of bookings
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Booking'
  *       500:
  *         description: Server error
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/ErrorResponse'
  */
 router.get("/", getBookings);
 
@@ -76,6 +50,7 @@ router.get("/", getBookings);
  * /bookings/{bookingId}:
  *   put:
  *     summary: Update booking
+ *     description: Execute the request to see the actual updated booking in the Server response section.
  *     parameters:
  *       - in: path
  *         name: bookingId
@@ -89,40 +64,21 @@ router.get("/", getBookings);
  *         application/json:
  *           schema:
  *             $ref: '#/components/schemas/BookingUpdate'
- *           example:
- *             vehicleColor: Black
- *             status: confirmed
- *             date: 2026-04-02
  *         application/x-www-form-urlencoded:
  *           schema:
  *             $ref: '#/components/schemas/BookingUpdate'
  *     responses:
  *       200:
  *         description: Booking updated successfully
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Booking'
  *       400:
  *         description: Validation error
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/ErrorResponse'
  *       404:
  *         description: Booking not found
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/ErrorResponse'
  *       500:
  *         description: Server error
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/ErrorResponse'
  *   delete:
  *     summary: Delete booking
+ *     description: Execute the request to see the actual delete result returned by the server.
  *     parameters:
  *       - in: path
  *         name: bookingId
@@ -133,28 +89,12 @@ router.get("/", getBookings);
  *     responses:
  *       200:
  *         description: Booking deleted successfully
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/DeleteResponse'
  *       400:
  *         description: Invalid booking ID
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/ErrorResponse'
  *       404:
  *         description: Booking not found
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/ErrorResponse'
  *       500:
  *         description: Server error
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/ErrorResponse'
  */
 router.put("/:bookingId", updateBooking);
 router.delete("/:bookingId", deleteBooking);

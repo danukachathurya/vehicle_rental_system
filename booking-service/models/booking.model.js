@@ -13,16 +13,6 @@ const bookingSchema = new mongoose.Schema(
       unique: true,
       immutable: true,
     },
-    userId: {
-      type: String,
-      trim: true,
-      default: () => createId("USR"),
-    },
-    vehicleId: {
-      type: String,
-      trim: true,
-      default: () => createId("VEH"),
-    },
     vehicleBrand: {
       type: String,
       required: true,
@@ -53,5 +43,11 @@ const bookingSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+bookingSchema.pre("validate", function () {
+  if (!this.bookingId) {
+    this.bookingId = createId("BKG");
+  }
+});
 
 module.exports = mongoose.model("Booking", bookingSchema);

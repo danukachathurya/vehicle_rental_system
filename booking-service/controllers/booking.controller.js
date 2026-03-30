@@ -15,10 +15,11 @@ function sanitizeBookingPayload(payload) {
 }
 
 function getBookingQuery(identifier) {
-  const query = [{ bookingId: identifier }];
+  const normalizedIdentifier = String(identifier).trim();
+  const query = [{ bookingId: normalizedIdentifier }];
 
-  if (mongoose.Types.ObjectId.isValid(identifier)) {
-    query.push({ _id: identifier });
+  if (mongoose.Types.ObjectId.isValid(normalizedIdentifier)) {
+    query.push({ _id: normalizedIdentifier });
   }
 
   return query.length === 1 ? query[0] : { $or: query };
@@ -54,7 +55,9 @@ exports.updateBooking = async (req, res) => {
     );
 
     if (!booking) {
-      return res.status(404).json({ error: "Booking not found" });
+      return res.status(404).json({
+        error: "Booking not found. Use the real bookingId returned when the booking was created.",
+      });
     }
 
     return res.json(booking);
@@ -70,7 +73,9 @@ exports.deleteBooking = async (req, res) => {
     );
 
     if (!booking) {
-      return res.status(404).json({ error: "Booking not found" });
+      return res.status(404).json({
+        error: "Booking not found. Use the real bookingId returned when the booking was created.",
+      });
     }
 
     return res.json({ message: "Booking deleted successfully" });
