@@ -71,6 +71,22 @@ module.exports = swaggerJsDoc({
             },
           },
         },
+        NotFoundResponse: {
+          type: "object",
+          properties: {
+            error: {
+              type: "string",
+            },
+          },
+        },
+        ServerErrorResponse: {
+          type: "object",
+          properties: {
+            error: {
+              type: "string",
+            },
+          },
+        },
         DeleteResponse: {
           type: "object",
           properties: {
