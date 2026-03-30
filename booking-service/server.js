@@ -54,6 +54,7 @@ const swaggerUiOptions = {
           opblock.querySelectorAll(".live-responses-table tbody tr")
         );
         var liveResponsesByStatus = {};
+        var hasLiveResponses = false;
 
         liveRows.forEach(function (liveRow) {
           var statusCell = liveRow.querySelector(".response-col_status");
@@ -67,6 +68,7 @@ const swaggerUiOptions = {
 
           if (status) {
             liveResponsesByStatus[status] = responseText;
+            hasLiveResponses = true;
           }
         });
 
@@ -79,12 +81,18 @@ const swaggerUiOptions = {
               (descriptionCell.querySelector(".response-col_description__inner") ||
                 descriptionCell);
             var status = statusCell && (statusCell.textContent || "").trim();
+            var isHandledErrorStatus = status === "400" || status === "500";
             var responseText = status && liveResponsesByStatus[status];
             var existing = inner && inner.querySelector(".actual-response-example");
 
             if (!inner) {
               return;
             }
+
+            staticRow.style.display =
+              hasLiveResponses && isHandledErrorStatus && !responseText
+                ? "none"
+                : "";
 
             if (!responseText) {
               if (existing) {
