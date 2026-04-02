@@ -51,8 +51,7 @@ app.use((req, res, next) => {
 app.get(["/api-docs", "/api-docs/"], (req, res) => {
   const links = services
     .map(
-      (service) =>
-        `<li><a href="${service.path}/api-docs/">${service.name} API Docs</a></li>`
+      (service) => `<li><a href="${service.path}/api-docs/">${service.name} API Docs</a></li>`
     )
     .join("");
 
