@@ -13,21 +13,20 @@ const {
  *     summary: Get all vehicles
  *     responses:
  *       200:
- *         description: List of vehicles
+ *         description: List of vehicles all
  *         content:
  *           application/json:
  *             schema:
  *               type: array
  *               items:
  *                 $ref: '#/components/schemas/Vehicle'
- *       500:
- *         description: Server error
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/ErrorResponse'
  *             example:
- *               error: Server error
+ *               - name: Toyota Corolla
+ *                 type: Sedan
+ *                 price: 15000
+ *                 vehicleId: ABC-001
+ *                 _id: 67e7aed6b812a1cd93bcd123
+ *                 __v: 0
  */
 router.get("/", getVehicles);
 
@@ -56,14 +55,6 @@ router.get("/", getVehicles);
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Vehicle'
- *       400:
- *         description: Validation error
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/ErrorResponse'
- *             example:
- *               error: Validation error
  */
 router.post("/", createVehicle);
 
@@ -107,30 +98,6 @@ router.post("/", createVehicle);
  *               vehicleId: ABC-001
  *               _id: 67e7aed6b812a1cd93bcd123
  *               __v: 0
- *       400:
- *         description: Invalid vehicle ID
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/ErrorResponse'
- *             example:
- *               error: Invalid vehicle ID
- *       404:
- *         description: Vehicle not found
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/ErrorResponse'
- *             example:
- *               error: Vehicle not found
- *       500:
- *         description: Server error
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/ErrorResponse'
- *             example:
- *               error: Server error
  *   delete:
  *     summary: Delete vehicle
  *     parameters:
@@ -148,30 +115,6 @@ router.post("/", createVehicle);
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/DeleteResponse'
- *       400:
- *         description: Invalid vehicle ID
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/ErrorResponse'
- *             example:
- *               error: Invalid vehicle ID
- *       404:
- *         description: Vehicle not found
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/ErrorResponse'
- *             example:
- *               error: Vehicle not found
- *       500:
- *         description: Server error
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/ErrorResponse'
- *             example:
- *               error: Server error
  */
 router.put("/:vehicleId", updateVehicle);
 router.delete("/:vehicleId", deleteVehicle);
