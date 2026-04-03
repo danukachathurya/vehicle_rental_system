@@ -73,6 +73,16 @@ app.use(
   })
 );
 
+// Common alias: /api/vehicles -> /vehicles
+app.use(
+  "/api/vehicles",
+  createProxyMiddleware({
+    target: "http://localhost:5002",
+    changeOrigin: true,
+    pathRewrite: (path) => (path === "/" ? "/vehicles" : `/vehicles${path}`),
+  })
+);
+
 app.get(["/api-docs", "/api-docs/"], (req, res) => {
   const links = services
     .map(
